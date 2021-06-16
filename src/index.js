@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {MainLayout} from './layout/index'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import {AppRoute} from './route/App.route';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(<MainLayout />,document.getElementById('root'));
+ReactDOM.render(<AppRoute />,document.getElementById('root'));
