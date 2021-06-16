@@ -1,4 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {AppRoute} from './route/App.route';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-ReactDOM.render(<h1>prject intialized</h1>,document.getElementById('root'));
+ReactDOM.render(<AppRoute />,document.getElementById('root'));
