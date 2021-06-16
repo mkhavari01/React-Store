@@ -5,7 +5,9 @@ import { Header } from "./components/Header/Header.component";
 class MainLayout extends Component{
     render(){
         return(
-            <Header />
+            <Header>
+                {this.props.children}
+            </Header>
         )
     }
 }

@@ -1,7 +1,7 @@
 import { Component } from "react";
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 // import pages in here =>
-
+import {MainLayout} from '../layout/index'
 //
 class AppRoute extends Component{
     render(){
@@ -9,7 +9,9 @@ class AppRoute extends Component{
             <BrowserRouter>
                 <Switch>
                     <Route path="/" exact>
-                        <h1>hello</h1>
+                        <MainLayout>
+                            <h1>main part of website will be here</h1>
+                        </MainLayout>
                     </Route>
                 </Switch>
             </BrowserRouter>

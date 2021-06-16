@@ -5,6 +5,7 @@ import styled from './Header.module.css'
 class Header extends Component{
     render(){
         return(
+            <>
             <Navbar bg="dark" variant="dark" className={styled.header} style={{justifyContent:'space-between'}} >
                 <div className='mx-5'>
                     <Navbar.Brand href="#home">
@@ -18,8 +19,9 @@ class Header extends Component{
                         <img width='50px' height='50px' />
                     </Nav>
                 </div> 
-                
             </Navbar>
+            {this.props.children}
+            </>
         )
     }
 }
