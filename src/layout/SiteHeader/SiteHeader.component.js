@@ -1,8 +1,8 @@
 import {Component} from 'react'
 import {Navbar,Nav} from 'react-bootstrap'
-import styled from './Header.module.css'
+import styled from './SiteHeader.module.css'
 
-class Header extends Component{
+class SiteHeader extends Component{
     render(){
         return(
             <>
@@ -26,4 +26,4 @@ class Header extends Component{
     }
 }
 
-export {Header}
+export {SiteHeader}
