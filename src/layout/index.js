@@ -1,2 +1,2 @@
-export { MainLayout } from "./Main/Main.layout";
-
+export { SiteHeader } from "./SiteHeader/SiteHeader.component";
+export {AdminHeader} from './AdminHeader/AdminHeader.component'
