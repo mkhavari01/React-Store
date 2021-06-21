@@ -16,8 +16,8 @@ class AppRoute extends Component{
                     </Route>
                 </Switch>
                 <Switch>
-                    <Route path="/adminLogin" exact>
-                        <LoginForm></LoginForm>
+                    <Route path="/AdminPanel" exact>
+                        <LoginForm />
                     </Route>
                 </Switch>
             </BrowserRouter>

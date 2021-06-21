@@ -1,12 +1,17 @@
 import { Component } from "react";
 import {Form,Button} from 'react-bootstrap'
 import styled from './LoginForm.module.css'
-import { Link } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
 class LoginForm extends Component{
+    login(e){
+        e.preventDefault()
+        console.log('logged in')
+        window.location.href = "/AdminPanel/orders";
+    }
     render(){
         return(
             <div className={styled.container}>
-                <Form className={styled.form}>
+                <Form className={styled.form} onSubmit={this.login}>
                     <h1 className={styled.formTitle}>
                         ورود به پنل مدیریت فروشگاه فلان
                     </h1>
