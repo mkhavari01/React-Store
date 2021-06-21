@@ -14,8 +14,6 @@ class AppRoute extends Component{
                             <h1>main part of website will be here</h1>
                         </SiteHeader>
                     </Route>
-                </Switch>
-                <Switch>
                     <Route path="/AdminPanel" exact>
                         <LoginForm />
                     </Route>
