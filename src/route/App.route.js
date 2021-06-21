@@ -13,9 +13,19 @@ class AppRoute extends Component{
                             <h1>main part of website will be here</h1>
                         </SiteHeader>
                     </Route>
-                    <Route path="/dashboard" exact>
-                        <AdminHeader>
-                            <h1>main part of website will be here</h1>
+                    <Route path="/AdminPanel/products" exact>
+                        <AdminHeader productsClass='active'>
+                            <h1>Products</h1>
+                        </AdminHeader>
+                    </Route>
+                    <Route path="/AdminPanel/pricing" exact>
+                        <AdminHeader pricingClass='active'>
+                            <h1>pricing</h1>
+                        </AdminHeader>
+                    </Route>
+                    <Route path="/AdminPanel/orders" exact>
+                        <AdminHeader ordersClass='active'>
+                            <h1>orders</h1>
                         </AdminHeader>
                     </Route>
                 </Switch>

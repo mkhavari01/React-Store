@@ -12,6 +12,9 @@ class SiteHeader extends Component{
                         سبد خرید
                         <i class="fa fa-shopping-cart mx-1" aria-hidden="true"></i>
                     </Navbar.Brand>
+                    <Navbar.Brand href="/adminPanel">
+                        مدیریت
+                    </Navbar.Brand>
                 </div>
                 <div className='mr-4'>
                     <Nav className={styled.brand}>
