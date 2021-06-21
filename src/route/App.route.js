@@ -2,6 +2,7 @@ import { Component } from "react";
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 // import pages in here =>
 import {SiteHeader,AdminHeader} from '../layout/index'
+import {LoginForm} from '../pages/AdminPanel/LoginForm/LoginForm.page'
 //
 class AppRoute extends Component{
     render(){
@@ -27,6 +28,9 @@ class AppRoute extends Component{
                         <AdminHeader ordersClass='active'>
                             <h1>orders</h1>
                         </AdminHeader>
+                    </Route>
+                    <Route path="/AdminPanel" exact>
+                        <LoginForm />
                     </Route>
                 </Switch>
             </BrowserRouter>
