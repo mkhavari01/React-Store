@@ -3,6 +3,7 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 // import pages in here =>
 import {SiteHeader,AdminHeader} from '../layout/index'
 import {LoginForm} from '../pages/AdminPanel/LoginForm/LoginForm.page'
+import {Home} from '../pages/site/Home/Home.page'
 //
 class AppRoute extends Component{
     render(){
@@ -11,7 +12,7 @@ class AppRoute extends Component{
                 <Switch>
                     <Route path="/" exact>
                         <SiteHeader>
-                            <h1>main part of website will be here</h1>
+                            <Home />
                         </SiteHeader>
                     </Route>
                     <Route path="/AdminPanel/products" exact>
