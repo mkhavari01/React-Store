@@ -7,7 +7,8 @@
     border-radius: 0% 0% 0% 0% / 0% 0% 0% 0% ;
     box-shadow: 15px 15px rgba(0,0,0,.15);
     transition: all .4s ease;
-    border: solid .5px black;
+    border-top: solid .5px black;
+    border-left: solid .5px black;
     margin-bottom: 25px;
 }
 .wrapper:hover {

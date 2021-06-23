@@ -6,14 +6,14 @@ class ProductCard extends Component{
         return(
                 <div className={styled.wrapper}>
                     <div className={styled.imgContainer}>
-                        <img width='85%' height='85%' src={pictures}/>
+                        <img width='85%' height='85%' src={this.props.picture} style={{borderRadius:'50%'}} />
                     </div>
                     <div className={styled.productDetail}>
                         <h2>
-                        در کادر زیر هر متنی را که دوست دارید 
+                            {this.props.desc}
                         </h2>
                         <h2>
-                            ۲۰۰ هزار تومان
+                            {this.props.price}
                         </h2>
                     </div>
                 </div>
