@@ -3,6 +3,7 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 // import pages in here =>
 import {SiteHeader,AdminHeader} from '../layout/index'
 import {LoginForm} from '../pages/AdminPanel/LoginForm/LoginForm.page'
+import {Products} from '../pages/AdminPanel/Products/Products.page'
 //
 class AppRoute extends Component{
     render(){
@@ -16,7 +17,7 @@ class AppRoute extends Component{
                     </Route>
                     <Route path="/AdminPanel/products" exact>
                         <AdminHeader productsClass='active'>
-                            <h1>Products</h1>
+                            <Products />
                         </AdminHeader>
                     </Route>
                     <Route path="/AdminPanel/pricing" exact>
