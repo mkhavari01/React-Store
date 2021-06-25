@@ -4,6 +4,7 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import {SiteHeader,AdminHeader} from '../layout/index'
 import {LoginForm} from '../pages/AdminPanel/LoginForm/LoginForm.page'
 import {Products} from '../pages/AdminPanel/Products/Products.page'
+import {Pricing} from '../pages/AdminPanel/Pricing/Pricing.page'
 //
 class AppRoute extends Component{
     render(){
@@ -22,7 +23,7 @@ class AppRoute extends Component{
                     </Route>
                     <Route path="/AdminPanel/pricing" exact>
                         <AdminHeader pricingClass='active'>
-                            <h1>pricing</h1>
+                            <Pricing />
                         </AdminHeader>
                     </Route>
                     <Route path="/AdminPanel/orders" exact>

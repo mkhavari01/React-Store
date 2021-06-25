@@ -11,9 +11,9 @@ class AdminHeader extends React.Component{
                 </div>
                 <div>
                     <Pagination>
-                        <Pagination.Item className={this.props.productsClass} href='/adminPanel/products'>کالاها</Pagination.Item>
-                        <Pagination.Item className={this.props.pricingClass} href='/adminPanel/pricing'>موجودی ها و قیمت ها</Pagination.Item>
                         <Pagination.Item className={this.props.ordersClass} href='/adminPanel/orders'>سفارش ها</Pagination.Item>
+                        <Pagination.Item className={this.props.pricingClass} href='/adminPanel/pricing'>موجودی ها و قیمت ها</Pagination.Item>
+                        <Pagination.Item className={this.props.productsClass} href='/adminPanel/products'>کالاها</Pagination.Item>
                     </Pagination>
                 </div>
                 <div>
