@@ -1,0 +1,11 @@
+table{
+    text-align: right;
+}
+
+.pageDetail{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-direction: row-reverse;
+    margin: 20px 0;
+}

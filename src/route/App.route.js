@@ -5,6 +5,7 @@ import {SiteHeader,AdminHeader} from '../layout/index'
 import {LoginForm} from '../pages/AdminPanel/LoginForm/LoginForm.page'
 import {Products} from '../pages/AdminPanel/Products/Products.page'
 import {Pricing} from '../pages/AdminPanel/Pricing/Pricing.page'
+import {Orders} from '../pages/AdminPanel/Orders/Orders.page'
 //
 class AppRoute extends Component{
     render(){
@@ -28,7 +29,7 @@ class AppRoute extends Component{
                     </Route>
                     <Route path="/AdminPanel/orders" exact>
                         <AdminHeader ordersClass='active'>
-                            <h1>orders</h1>
+                            <Orders />
                         </AdminHeader>
                     </Route>
                     <Route path="/AdminPanel" exact>
