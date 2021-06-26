@@ -4,107 +4,75 @@ import styled from './Home.page.module.css'
 import axios from 'axios' 
 
 
-// class Home extends React.Component{
-//     state={
-//         dairy : []
-//     }
-    // componentDidMount(){
-    //     axios.get('http://localhost:3000/products')
-    //      .then((res)=>{
-    //          const dairy = res.data
-    //          this.setState({dairy : dairy})
-    //      })
-    // }
-//     render(){
-//         return(
-//             <>
-//             <h1 className={styled.h1}>کالاهای گروه لبنیات</h1>
-//             <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
-//                 {/* <ProductCard /> */}
-//                 { 
-                // this.state.dairy.map(dairy => <ProductCard 
-                // price={dairy.price} 
-                // desc={dairy.createdAt}
-                // picture={dairy.avatar}
-                // key={dairy.id}
-                // />)
-//                 }
-//             </div>
-                
-//             </>
-//         )
-//     }
-// }
-
-
-class Home extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        products : [],
-        currentPage: 1,
-        productsPerPage: 9
-      };
-      this.handleClick = this.handleClick.bind(this);
+class Home extends React.Component{
+    state={
+        p0 : [],
+        p1 : [],
+        p2 : []
     }
     componentDidMount(){
-        axios.get('http://localhost:3000/products')
-         .then((res)=>{
-             const products = res.data
-             this.setState({products : products})
-         })
+        const one = 'http://localhost:3000/selectedleadGroup1'
+        const two = 'http://localhost:3000/selectedleadGroup2'
+        const three = 'http://localhost:3000/selectedleadGroup3'
+        const requestOne = axios.get(one);
+        const requestTwo = axios.get(two);
+        const requestThree = axios.get(three);
+        axios
+          .all([requestOne, requestTwo, requestThree])
+          .then(
+            axios.spread((...responses) => {
+              
+              this.setState({
+                p0 : responses[0].data,
+                p1 : responses[1].data,
+                p2 : responses[2].data
+              })
+              console.log(this.state)
+            })
+          ).catch((error)=>{
+            console.log(error)
+          })
     }
-    handleClick(event) {
-      this.setState({
-        currentPage: Number(event.target.id)
-      });
+    render(){
+      const {p0,p1,p2} = this.state
+        return(
+            <>
+            <h1 className={styled.h1}>کالاهای گروه لبنیات</h1>
+            <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
+                { 
+                p0.map(dairy => <ProductCard 
+                price={dairy.price+'هزار تومان'} 
+                desc={dairy.name}
+                picture={dairy.avatar}
+                key={dairy.id}
+                />)
+                }
+            </div>
+            <h1 className={styled.h1}>کالاهای گروه شوینده و بهداشتی</h1>
+            <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
+                { 
+                p1.map(dairy => <ProductCard 
+                price={dairy.price+'هزار تومان'} 
+                desc={dairy.name}
+                picture={dairy.avatar}
+                key={dairy.id}
+                />)
+                }
+            </div>
+            <h1 className={styled.h1}>کالاهای گروه حبوبات</h1>
+            <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
+                { 
+                p2.map(dairy => <ProductCard 
+                price={dairy.price+'هزار تومان'} 
+                desc={dairy.name}
+                picture={dairy.avatar}
+                key={dairy.id}
+                />)
+                }
+            </div>
+            </>
+        )
     }
+}
 
-    render() {
-      const { products, currentPage, productsPerPage } = this.state;
-
-      // Logic for displaying current products
-      const indexOfLastTodo = currentPage * productsPerPage;
-      const indexOfFirstTodo = indexOfLastTodo - productsPerPage;
-      const currentproducts = products.slice(indexOfFirstTodo, indexOfLastTodo);
-
-      const renderproducts = currentproducts.map((todo) => {
-        return <ProductCard 
-        price={todo.id} 
-        desc={todo.createdAt}
-        picture={todo.avatar}
-        key={todo.id}
-        />;
-      });
-
-      // Logic for displaying page numbers
-      const pageNumbers = [];
-      for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
-        pageNumbers.push(i);
-      }
-
-      const renderPageNumbers = pageNumbers.map(number => {
-        return (
-          <li
-            key={number}
-            id={number}
-            onClick={this.handleClick}
-          >
-            {number}
-          </li>
-        );
-      });
-
-      return (
-        <div className='mt-4'>
-          <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
-            {renderproducts}
-          </div>
-          <ul id={styled.pageNumbers}>
-            {renderPageNumbers}
-          </ul>
-        </div>
-      );
-    }
-  }
 export {Home}

@@ -4,22 +4,3 @@
     padding: 30px 60px;
     padding-bottom: 20px;
 }
-#pageNumbers {
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    flex-direction: row-reverse;
-  }
-  
-  #pageNumbers > li {
-    color: blue;
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: pointer;
-    padding: 10px 17px;
-    border: .5px solid;
-    border-radius: 50%;
-    margin: 10px;
-}

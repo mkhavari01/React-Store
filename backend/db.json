@@ -510,5 +510,100 @@
       "subGroup": "subGroup 50",
       "price": 81
     }
+  ],
+  "selectedleadGroup1":[
+    {
+      "id": "1",
+      "createdAt": "2021-06-22T19:45:19.178Z",
+      "name": "Mr. Duane Fritsch",
+      "avatar": "https://cdn.fakercloud.com/avatars/michzen_128.jpg",
+      "desc": "desc 50",
+      "leadGroup": "leadGroup 50",
+      "subGroup": "subGroup 50",
+      "price": 86
+    },
+    {
+      "id": "2",
+      "createdAt": "2021-06-22T19:45:19.178Z",
+      "name": "Mr. Duane Fritsch",
+      "avatar": "https://cdn.fakercloud.com/avatars/michzen_128.jpg",
+      "desc": "desc 50",
+      "leadGroup": "leadGroup 50",
+      "subGroup": "subGroup 50",
+      "price": 81
+    },
+    {
+      "id": "3",
+      "createdAt": "2021-06-22T19:45:19.178Z",
+      "name": "Mr. Duane Fritsch",
+      "avatar": "https://cdn.fakercloud.com/avatars/michzen_128.jpg",
+      "desc": "desc 50",
+      "leadGroup": "leadGroup 50",
+      "subGroup": "subGroup 50",
+      "price": 86
+    }
+  ],
+  "selectedleadGroup2":[
+    {
+      "id": "1",
+      "createdAt": "2021-06-22T19:45:19.178Z",
+      "name": "Mr. Duane Fritsch",
+      "avatar": "https://cdn.fakercloud.com/avatars/michzen_128.jpg",
+      "desc": "desc 50",
+      "leadGroup": "leadGroup 50",
+      "subGroup": "subGroup 50",
+      "price": 86
+    },
+    {
+      "id": "2",
+      "createdAt": "2021-06-22T19:45:19.178Z",
+      "name": "Mr. Duane Fritsch",
+      "avatar": "https://cdn.fakercloud.com/avatars/michzen_128.jpg",
+      "desc": "desc 50",
+      "leadGroup": "leadGroup 50",
+      "subGroup": "subGroup 50",
+      "price": 81
+    },
+    {
+      "id": "3",
+      "createdAt": "2021-06-22T19:45:19.178Z",
+      "name": "Mr. Duane Fritsch",
+      "avatar": "https://cdn.fakercloud.com/avatars/michzen_128.jpg",
+      "desc": "desc 50",
+      "leadGroup": "leadGroup 50",
+      "subGroup": "subGroup 50",
+      "price": 86
+    }
+  ],"selectedleadGroup3":[
+    {
+      "id": "1",
+      "createdAt": "2021-06-22T19:45:19.178Z",
+      "name": "Mr. Duane Fritsch",
+      "avatar": "https://cdn.fakercloud.com/avatars/michzen_128.jpg",
+      "desc": "desc 50",
+      "leadGroup": "leadGroup 50",
+      "subGroup": "subGroup 50",
+      "price": 86
+    },
+    {
+      "id": "2",
+      "createdAt": "2021-06-22T19:45:19.178Z",
+      "name": "Mr. Duane Fritsch",
+      "avatar": "https://cdn.fakercloud.com/avatars/michzen_128.jpg",
+      "desc": "desc 50",
+      "leadGroup": "leadGroup 50",
+      "subGroup": "subGroup 50",
+      "price": 81
+    },
+    {
+      "id": "3",
+      "createdAt": "2021-06-22T19:45:19.178Z",
+      "name": "Mr. Duane Fritsch",
+      "avatar": "https://cdn.fakercloud.com/avatars/michzen_128.jpg",
+      "desc": "desc 50",
+      "leadGroup": "leadGroup 50",
+      "subGroup": "subGroup 50",
+      "price": 86
+    }
   ]
 }
