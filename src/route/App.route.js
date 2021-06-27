@@ -6,6 +6,7 @@ import {LoginForm} from '../pages/AdminPanel/LoginForm/LoginForm.page'
 import {Products} from '../pages/AdminPanel/Products/Products.page'
 import {Pricing} from '../pages/AdminPanel/Pricing/Pricing.page'
 import {Orders} from '../pages/AdminPanel/Orders/Orders.page'
+import {SiteProducts} from '../pages/site/Products/SiteProducts.page'
 //
 class AppRoute extends Component{
     render(){
@@ -34,6 +35,9 @@ class AppRoute extends Component{
                     </Route>
                     <Route path="/AdminPanel" exact>
                         <LoginForm />
+                    </Route>
+                    <Route path="/SiteProducts" exact>
+                        <SiteProducts />
                     </Route>
                 </Switch>
             </BrowserRouter>

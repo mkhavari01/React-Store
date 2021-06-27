@@ -1,0 +1,25 @@
+.sideBar{
+    width: 25%;
+    float: right;
+    text-align: right;
+    background: cadetblue;
+    height: 100vh;
+    padding: 30px;
+    overflow: scroll;
+}
+ul:first-child{
+    margin-top: 0 !important;
+}
+ul{
+    margin-top: 50px;
+    list-style: none;
+    font-size: 20px;
+}
+ul li:first-child{
+    margin-top: 20px;
+}
+li{
+    margin-right: 30px;
+    list-style: none;
+    font-size: 20px;
+}
