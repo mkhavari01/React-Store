@@ -2,10 +2,11 @@
     width: 25%;
     float: right;
     text-align: right;
-    background: cadetblue;
-    height: 100vh;
+    background: #fff;
     padding: 30px;
-    overflow: scroll;
+    position: sticky;
+    top: 0;
+    box-shadow: rgb(0 0 0 / 25%) 0px 0.0625em 0.0625em, rgb(0 0 0 / 25%) 0px 1em 0.5em, rgb(255 255 255 / 10%) 0px 0px 0px 1px inset
 }
 ul:first-child{
     margin-top: 0 !important;
@@ -34,6 +35,6 @@ li a:hover{
 .products{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     padding: 20px;
 }
