@@ -1,0 +1,18 @@
+.wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.form{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 20px;
+}
+.form input{
+    width: 60px;
+    text-align: right;
+    margin-left: 10px;
+}
+.detail{
+    display: flex;
+    flex-direction: column;
+}

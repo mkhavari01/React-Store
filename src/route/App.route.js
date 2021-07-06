@@ -8,6 +8,7 @@ import {Pricing} from '../pages/AdminPanel/Pricing/Pricing.page'
 import {Orders} from '../pages/AdminPanel/Orders/Orders.page'
 import {SiteProducts} from '../pages/site/Products/SiteProducts.page'
 import {Home} from '../pages/site/Home/Home.page'
+import {Product} from '../pages/site/Product/Product.page'
 //
 class AppRoute extends Component{
     render(){
@@ -39,6 +40,11 @@ class AppRoute extends Component{
                     </Route>
                     <Route path="/SiteProducts" exact>
                         <SiteProducts />
+                    </Route>
+                    <Route path="/product" exact>
+                        <SiteHeader>
+                            <Product />
+                        </SiteHeader>
                     </Route>
                 </Switch>
             </BrowserRouter>
