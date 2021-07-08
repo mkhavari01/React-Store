@@ -1,13 +1,14 @@
 import React from 'react'
-import { Table,Pagination,InputGroup } from 'react-bootstrap';
+import { Table,Pagination } from 'react-bootstrap';
 import styled from './orders.page.module.css'
 import axios from 'axios' 
-
+import {OrdersModal} from '../../../components/modals/OrdersModal'
 class Orders extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         products : [],
+        user : '',
         currentPage: 1,
         productsPerPage: 5,
       };
@@ -15,6 +16,7 @@ class Orders extends React.Component {
       this.handleClickPrev = this.handleClickPrev.bind(this);
       this.handleClickNext = this.handleClickNext.bind(this);
       this.radioHandler = this.radioHandler.bind(this);
+      this.modalHandler = this.modalHandler.bind(this);
     }
     componentDidMount(){
         axios.get('http://localhost:3000/orders')
@@ -51,6 +53,12 @@ class Orders extends React.Component {
          })
       }
     }
+    modalHandler= (e)=>{
+      this.setState({
+        user : e.target.parentElement.parentElement.lastChild.textContent
+      })
+      // console.log(this.state.user)
+    }
     render() {
       const { products, currentPage, productsPerPage } = this.state;
 
@@ -61,10 +69,10 @@ class Orders extends React.Component {
 
       const renderproducts = currentproducts.map((product) => {
         return <tr>
-                <td><a href='#'>ثبت سفارش</a></td>
-                <td>{product.price}</td>
+                <td><OrdersModal dataParentToChild = {this.state.user} modalHandler={this.modalHandler}/></td>
+                <td>1400/4/{product.id}</td>
                 <td>
-                  {product.id}
+                  {product.totalPrice}
                 </td>
                 <td>{product.name}</td>
               </tr>
@@ -78,7 +86,7 @@ class Orders extends React.Component {
 
       const renderPageNumbers = pageNumbers.map(number => {
         return (
-        <Pagination.Item key={number} id={number} onClick={this.handleClick} active={this.state.currentPage==number ?'true' : ''} >
+        <Pagination.Item key={number} id={number} onClick={this.handleClick} active={currentPage==number ?'true' : ''} >
             {number}
         </Pagination.Item>
         );
@@ -87,7 +95,7 @@ class Orders extends React.Component {
       return (
         <div className='mt-4 container'>
             <div className={styled.pageDetail}>
-                <h2>مدیریت موجودی و قیمت ها</h2>
+                <h2>مدیریت سفارش ها</h2>
                 <form>
                     <input type="radio" id="html" name="fav_language" value="notDelivered" onClick={this.radioHandler} />
                     <label for="html" className='mr-5'>سفارش های در انتظار ارسال</label>
