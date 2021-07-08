@@ -14,9 +14,10 @@ class Orders extends React.Component {
       this.handleClick = this.handleClick.bind(this);
       this.handleClickPrev = this.handleClickPrev.bind(this);
       this.handleClickNext = this.handleClickNext.bind(this);
+      this.radioHandler = this.radioHandler.bind(this);
     }
     componentDidMount(){
-        axios.get('http://localhost:3000/products')
+        axios.get('http://localhost:3000/orders')
          .then((res)=>{
              const products = res.data
              this.setState({products : products})
@@ -35,22 +36,37 @@ class Orders extends React.Component {
     handleClickNext() {
         this.setState({currentPage: this.state.currentPage + 1})
     }
+    radioHandler(e){
+      if(e.target.value=="notDelivered"){
+        axios.get('http://localhost:3000/orders?deliverd=false')
+         .then((res)=>{
+             const products = res.data
+             this.setState({products : products})
+         })
+      }else{
+        axios.get('http://localhost:3000/orders?deliverd=true')
+         .then((res)=>{
+             const products = res.data
+             this.setState({products : products})
+         })
+      }
+    }
     render() {
       const { products, currentPage, productsPerPage } = this.state;
 
       // Logic for displaying current products
-      const indexOfLastTodo = currentPage * productsPerPage;
-      const indexOfFirstTodo = indexOfLastTodo - productsPerPage;
-      const currentproducts = products.slice(indexOfFirstTodo, indexOfLastTodo);
+      const indexOfLastproduct = currentPage * productsPerPage;
+      const indexOfFirstproduct = indexOfLastproduct - productsPerPage;
+      const currentproducts = products.slice(indexOfFirstproduct, indexOfLastproduct);
 
-      const renderproducts = currentproducts.map((todo) => {
+      const renderproducts = currentproducts.map((product) => {
         return <tr>
                 <td><a href='#'>ثبت سفارش</a></td>
-                <td>{todo.price}</td>
+                <td>{product.price}</td>
                 <td>
-                  {todo.id}
+                  {product.id}
                 </td>
-                <td>{todo.createdAt}</td>
+                <td>{product.name}</td>
               </tr>
       });
 
@@ -73,9 +89,9 @@ class Orders extends React.Component {
             <div className={styled.pageDetail}>
                 <h2>مدیریت موجودی و قیمت ها</h2>
                 <form>
-                    <input type="radio" id="html" name="fav_language" value="input1" />
+                    <input type="radio" id="html" name="fav_language" value="notDelivered" onClick={this.radioHandler} />
                     <label for="html" className='mr-5'>سفارش های در انتظار ارسال</label>
-                    <input type="radio" id="html" name="fav_language" value="input2" />
+                    <input type="radio" id="html" name="fav_language" value="delivered" onClick={this.radioHandler} />
                     <label for="html">سفارش های تحویل شده</label>
                 </form>
             </div>

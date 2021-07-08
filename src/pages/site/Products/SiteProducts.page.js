@@ -45,11 +45,11 @@ class SiteProducts extends React.Component{
     render(){
         const renderSidebar = this.state.sideBar.map((el) => {
             return <>
-                    <ul className='mt-4'> 
+                    <ul className={styled.ul}> 
                         {el.name}
                     </ul>
                     {el.subNames.map((subnames)=>{
-                        return <li> <a onClick={this.linkHandler} href={"#"+subnames}>{subnames}</a> </li>
+                        return <li className={styled.li}> <a onClick={this.linkHandler} href={"#"+subnames}>{subnames}</a> </li>
                     })}
                     </>
         });
