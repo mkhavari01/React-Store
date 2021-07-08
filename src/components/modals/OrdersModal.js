@@ -24,6 +24,9 @@ class OrdersModal extends Component{
     })
     this.props.modalHandler(e)
   }
+  componentDidMount(){
+    console.log('mounted')
+  }
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.dataParentToChild !== this.props.dataParentToChild) {
       console.log('props has changed.')
@@ -39,13 +42,15 @@ class OrdersModal extends Component{
          })
     }
   }
-  
+  saveBtn(){
+    console.log('save btn called')
+  }
   render(){
   const renderproducts = this.state.orders.map((product) => {
     return    <tr>
                   <td>{product.id}</td>
                   <td>{product.price}</td>
-                  <td>{product.user}</td>
+                  <td>{product.name}</td>
               </tr>
   });
   const renderCustumer = this.state.user.map((person) => {
@@ -67,13 +72,13 @@ class OrdersModal extends Component{
               </li>
             </ul>
   });
-  const renderBtn = this.state.user.map((person) => {
+  const renderFooter = this.state.user.map((person) => {
     if(person.deliverd){
       return <span>
               زمان تحویل : <span>{person.deliverTime}</span>
             </span>
     }else{
-      return  <Button variant="success">
+      return  <Button variant="success" onClick={this.saveBtn}>
             تحویل شد
               </Button>
     }
@@ -110,7 +115,7 @@ class OrdersModal extends Component{
             </Table>
         </Modal.Body>
         <Modal.Footer>
-          {renderBtn}
+          {renderFooter}
         </Modal.Footer>
       </Modal>
     </>

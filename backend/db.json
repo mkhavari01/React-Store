@@ -9,7 +9,7 @@
       "leadGroup": "کالاهای اساسی و خوابار",
       "subGroup": "نان",
       "price": 77,
-      "user" : "ممد"
+      "user": "ممد"
     },
     {
       "id": "2",
@@ -20,7 +20,7 @@
       "leadGroup": "کالاهای اساسی و خوابار",
       "subGroup": "نان",
       "price": 1,
-      "user" : "ممد"
+      "user": "ممد"
     },
     {
       "id": "3",
@@ -31,7 +31,7 @@
       "leadGroup": "کالاهای اساسی و خوابار",
       "subGroup": "نان",
       "price": 5,
-      "user" : "ممد"
+      "user": "ممد"
     },
     {
       "id": "4",
@@ -42,7 +42,7 @@
       "leadGroup": "کالاهای اساسی و خوابار",
       "subGroup": "نان",
       "price": 54,
-      "user" : "ممد"
+      "user": "ممد"
     },
     {
       "id": "5",
@@ -53,7 +53,7 @@
       "leadGroup": "کالاهای اساسی و خوابار",
       "subGroup": "برنج",
       "price": 90,
-      "user" : "ممد"
+      "user": "ممد"
     },
     {
       "id": "6",
@@ -64,7 +64,7 @@
       "leadGroup": "کالاهای اساسی و خوابار",
       "subGroup": "برنج",
       "price": 93,
-      "user" : "حسن"
+      "user": "حسن"
     },
     {
       "id": "7",
@@ -75,7 +75,7 @@
       "leadGroup": "کالاهای اساسی و خوابار",
       "subGroup": "قندونبات",
       "price": 88,
-      "user" : "حسن"
+      "user": "حسن"
     },
     {
       "id": "8",
@@ -206,20 +206,20 @@
       "leadGroup": "leadGroup 20",
       "subGroup": "subGroup 20",
       "price": 99
-     }
+    }
   ],
-  "sideBar" :[
+  "sideBar": [
     {
-      "name" : "کالاهای اساسی و خواربار" ,
-      "subNames" : [
+      "name": "کالاهای اساسی و خواربار",
+      "subNames": [
         "نان",
         "برنج",
         "قندونبات"
       ]
     },
     {
-      "name" : "لبنیات" ,
-      "subNames" : [
+      "name": "لبنیات",
+      "subNames": [
         "شبر",
         "کره حیوانی و گیاهی",
         "دوغ",
@@ -227,8 +227,8 @@
       ]
     },
     {
-      "name" : "محصولات پروتينی" ,
-      "subNames" : [
+      "name": "محصولات پروتينی",
+      "subNames": [
         "گوشت گاو و گوساله",
         "گوشت مرغ",
         "تخم مرغ",
@@ -236,8 +236,8 @@
       ]
     },
     {
-      "name" : "نوشیدنی" ,
-      "subNames" : [
+      "name": "نوشیدنی",
+      "subNames": [
         "قهوه",
         "قهوه فوری و هات چاکلت",
         "چای",
@@ -245,7 +245,7 @@
       ]
     }
   ],
-  "selectedleadGroup1" : [
+  "selectedleadGroup1": [
     {
       "id": "1",
       "createdAt": "2021-06-23T08:33:07.195Z",
@@ -257,7 +257,7 @@
       "price": 99
     }
   ],
-  "selectedleadGroup2" : [
+  "selectedleadGroup2": [
     {
       "id": "1",
       "createdAt": "2021-06-23T08:33:07.195Z",
@@ -269,7 +269,7 @@
       "price": 99
     }
   ],
-  "selectedleadGroup3" : [
+  "selectedleadGroup3": [
     {
       "id": "1",
       "createdAt": "2021-06-23T08:33:07.195Z",
@@ -281,83 +281,89 @@
       "price": 99
     }
   ],
-  "orders" : [
+  "orders": [
     {
       "id": "1",
       "createdAt": "2021-06-23T00:19:34.152Z",
       "name": "ممد",
-      "address" : "ایران تهران" ,
-      "telephone" : "۰۹۱۲۵۹۶۵۶۳۲",
-      "deliverTime" : "قردا بعد از ظهر",
-      "orderTime" : "دیروز صبح ",
+      "address": "ایران تهران",
+      "telephone": "۰۹۱۲۵۹۶۵۶۳۲",
+      "deliverTime": "قردا بعد از ظهر",
+      "orderTime": "دیروز صبح ",
       "totalPrice": 77000,
-      "deliverd" : true
+      "deliverd": true
     },
     {
       "id": "2",
       "createdAt": "2021-06-23T00:19:34.152Z",
       "name": "حسن",
-      "address" : "ایران تهران" ,
-      "telephone" : "۰۹۱۲۵۹۶۵۶۳۲",
-      "deliverTime" : "قردا بعد از ظهر",
-      "orderTime" : "دیروز صبح ",
+      "address": "ایران تهران",
+      "telephone": "۰۹۱۲۵۹۶۵۶۳۲",
+      "deliverTime": "قردا بعد از ظهر",
+      "orderTime": "دیروز صبح ",
       "totalPrice": 12000,
-      "deliverd" : false
+      "deliverd": false
     },
     {
       "id": "3",
       "createdAt": "2021-06-23T00:19:34.152Z",
       "name": "رضا",
-      "address" : "ایران تهران" ,
-      "telephone" : "۰۹۱۲۵۹۶۵۶۳۲",
-      "deliverTime" : "قردا بعد از ظهر",
-      "orderTime" : "دیروز صبح ",
+      "address": "ایران تهران",
+      "telephone": "۰۹۱۲۵۹۶۵۶۳۲",
+      "deliverTime": "قردا بعد از ظهر",
+      "orderTime": "دیروز صبح ",
       "totalPrice": 12000,
-      "deliverd" : false
+      "deliverd": false
     },
     {
       "id": "4",
       "createdAt": "2021-06-23T00:19:34.152Z",
       "name": "علی",
-      "address" : "ایران تهران" ,
-      "telephone" : "۰۹۱۲۵۹۶۵۶۳۲",
-      "deliverTime" : "قردا بعد از ظهر",
-      "orderTime" : "دیروز صبح ",
+      "address": "ایران تهران",
+      "telephone": "۰۹۱۲۵۹۶۵۶۳۲",
+      "deliverTime": "قردا بعد از ظهر",
+      "orderTime": "دیروز صبح ",
       "totalPrice": 12000,
-      "deliverd" : true
+      "deliverd": true
     },
     {
       "id": "5",
       "createdAt": "2021-06-23T00:19:34.152Z",
       "name": "محسن",
-      "address" : "ایران تهران" ,
-      "telephone" : "۰۹۱۲۵۹۶۵۶۳۲",
-      "deliverTime" : "قردا بعد از ظهر",
-      "orderTime" : "دیروز صبح ",
+      "address": "ایران تهران",
+      "telephone": "۰۹۱۲۵۹۶۵۶۳۲",
+      "deliverTime": "قردا بعد از ظهر",
+      "orderTime": "دیروز صبح ",
       "totalPrice": 12000,
-      "deliverd" : true
+      "deliverd": true
     },
     {
       "id": "6",
       "createdAt": "2021-06-23T00:19:34.152Z",
       "name": "نیما",
-      "address" : "ایران تهران" ,
-      "telephone" : "۰۹۱۲۵۹۶۵۶۳۲",
-      "deliverTime" : "قردا بعد از ظهر",
-      "orderTime" : "دیروز صبح ",
+      "address": "ایران تهران",
+      "telephone": "۰۹۱۲۵۹۶۵۶۳۲",
+      "deliverTime": "قردا بعد از ظهر",
+      "orderTime": "دیروز صبح ",
       "totalPrice": 12000,
-      "deliverd" : true
+      "deliverd": true
     },
     {
       "id": "7",
       "createdAt": "2021-06-23T00:19:34.152Z",
       "name": "شهاب",
-      "address" : "ایران تهران" ,
-      "telephone" : "۰۹۱۲۵۹۶۵۶۳۲",
-      "deliverTime" : "قردا بعد از ظهر",
-      "orderTime" : "دیروز صبح ",
+      "address": "ایران تهران",
+      "telephone": "۰۹۱۲۵۹۶۵۶۳۲",
+      "deliverTime": "قردا بعد از ظهر",
+      "orderTime": "دیروز صبح ",
       "totalPrice": 12000,
-      "deliverd" : true
+      "deliverd": true
+    }
+  ],
+  "test": [
+    {
+      "name": "hey",
+      "deliverd": false
     }
   ]
 }
