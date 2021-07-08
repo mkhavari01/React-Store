@@ -10,10 +10,12 @@ class Pricing extends React.Component {
         products : [],
         currentPage: 1,
         productsPerPage: 5,
+        editing : false
       };
       this.handleClick = this.handleClick.bind(this);
       this.handleClickPrev = this.handleClickPrev.bind(this);
       this.handleClickNext = this.handleClickNext.bind(this);
+      this.editHandler = this.editHandler.bind(this);
     }
     componentDidMount(){
         axios.get('http://localhost:3000/products')
@@ -35,22 +37,35 @@ class Pricing extends React.Component {
     handleClickNext() {
         this.setState({currentPage: this.state.currentPage + 1})
     }
+    editHandler(e){
+      console.log(e.target.id)
+      console.log(this.state)
+      const element = e.target
+      const val = element.textContent 
+      element.innerHTML = `<input type='number' value=${val} min=0 ></input>`
+    }
+    saveBtn(){
+      const ff = document.querySelectorAll('input')
+      console.log(ff)
+      ff.forEach((el)=>{
+        el.remove()
+      })
+    }
     render() {
       const { products, currentPage, productsPerPage } = this.state;
 
       // Logic for displaying current products
-      const indexOfLastTodo = currentPage * productsPerPage;
-      const indexOfFirstTodo = indexOfLastTodo - productsPerPage;
-      const currentproducts = products.slice(indexOfFirstTodo, indexOfLastTodo);
+      const indexOfLastproduct = currentPage * productsPerPage;
+      const indexOfFirstproduct = indexOfLastproduct - productsPerPage;
+      const currentproducts = products.slice(indexOfFirstproduct, indexOfLastproduct);
 
-      const renderproducts = currentproducts.map((todo) => {
+      const renderproducts = currentproducts.map((product) => {
         return <tr>
-                
-                <td>{todo.price}</td>
-                <td>
-                  {todo.id}
+                <td onClick={this.editHandler} id={product.id}>{product.price}</td>
+                <td onClick={this.editHandler} id={product.id}>
+                  {product.entity}
                 </td>
-                <td>{todo.createdAt}</td>
+                <td>{product.name}</td>
               </tr>
       });
 
@@ -72,7 +87,7 @@ class Pricing extends React.Component {
         <div className='mt-4 container'>
             <div className={styled.pageDetail}>
                 <h2>مدیریت موجودی و قیمت ها</h2>
-                <Button variant="light"> ذخیره</Button>
+                <Button variant="light" onClick={this.saveBtn} > ذخیره</Button>
             </div>
             <Table striped bordered hover>
                 <thead>
