@@ -2,7 +2,7 @@ import React from 'react'
 import { Table,Pagination, Button } from 'react-bootstrap';
 import styled from './products.page.module.css'
 import axios from 'axios' 
-
+import {ProductModal} from '../../../components/modals/ProductsModal'
 class Products extends React.Component {
     constructor(props) {
       super(props);
@@ -46,7 +46,7 @@ class Products extends React.Component {
       const renderproducts = currentproducts.map((todo) => {
         return <tr>
                 <td>
-                  <a href='#'>ویرایش</a> {' '}
+                <ProductModal>ویرایش</ProductModal> {' '}
                   <a href='#'>حذف</a>
                 </td>
                 <td>{todo.subGroup} / {todo.leadGroup}</td>
@@ -75,7 +75,7 @@ class Products extends React.Component {
         <div className='mt-4 container'>
             <div className={styled.pageDetail}>
                 <h2>مدیریت کالاها</h2>
-                <Button variant="success">افزودن کالا</Button>
+                <ProductModal color={{backgroundColor: '#28a745',color:'#fff',padding:'4px',borderRadius:'3px'}} >افزودن کالا</ProductModal>
             </div>
             <Table striped bordered hover>
                 <thead>
