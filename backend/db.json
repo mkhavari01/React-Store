@@ -226,15 +226,26 @@
       "entity": 12
     },
     {
-      "avatar": "blob:http://localhost:3001/f9f63ad5-4df6-40af-86be-c796e06f4b35",
-      "name": "چای",
-      "leadGroup": "نوشیدنی",
-      "desc": "چای سبز ",
-      "subGroup": "subGroup1",
-      "price": 0,
-      "entity": 0,
-      "createdAt": 1626076231694,
-      "id": "QEx_Xhc"
+      "name": "چی هست",
+      "leadGroup": "کالاهای اساسی و خواربار",
+      "subGroup": "نان",
+      "desc": "خیلی خیلی گرون",
+      "price": "0",
+      "entity": "0",
+      "image": "/files/d8dfc42b91416dd76499dfd7ee59262d",
+      "createdAt": 1626097637399,
+      "id": "TJ5JVix"
+    },
+    {
+      "name": "گوشت قرمز",
+      "leadGroup": "محصولات پروتينی",
+      "subGroup": "گوشت گاو و گوساله",
+      "desc": "کمی ارزون اما قابل خوردن",
+      "price": "0",
+      "entity": "0",
+      "image": "/files/01b6fcf65e198be91fb2d06e4ada4f8d",
+      "createdAt": 1626098626602,
+      "id": "Soocl40"
     }
   ],
   "sideBar": [

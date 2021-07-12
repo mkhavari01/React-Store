@@ -15,37 +15,52 @@ class ProductModal extends React.Component{
             })
           })
     }
-    handleClose = () => this.setState({
+    handleClose = () => {this.setState({
         show : false
     })
-    handleShow = () => this.setState({
+       
+    }
+    handleShow = (e) => {this.setState({
         show : true
     })
+        this.props.modalHandler(e)
+    }
 
     handleSubmit = (e) => {
-        e.preventDefault()
-        const data = {}
-        const keys = ['avatar','name','leadGroup','desc']
-        data['avatar'] = URL.createObjectURL(e.target.children[0].children[1].children[0].files[0])
+        // e.preventDefault()
+        var formData = new FormData();
+        formData.append('image',e.target.children[0].children[1].children[0].files[0])
+        const keys = ['avatar','name','leadGroup','subGroup','desc']
         for(var i=1;i<keys.length;i++){
-            data[keys[i]] = e.target.children[i].children[1].value
+            formData.append(keys[i],e.target.children[i].children[1].value)
         }
-        // data['createdAt'] = new Date().toISOString()
-        // data['id'] = new Date().toISOString().slice(20)
-        data['subGroup'] = 'subGroup' + new Date().toISOString().slice(22,23)
-        data['price'] = 0
-        data['entity'] = 0
-        console.log(data)
-        axios.post('http://localhost:3000/products',data)
+        // formData.append('createdAt',new Date().toISOString())
+        // formData.append('id',new Date().toISOString().slice(20))
+        formData.append('price',0)
+        formData.append('entity',0)
+        // console.log(data)
+        axios.post('http://localhost:3000/products',formData)
           .then((res)=>{
               console.log(res)
           })
         this.handleClose()
         
     }
+    componentDidUpdate(prevProps,prevState){
+        if (prevProps.data !== this.props.data){
+            console.log(this.props.data)
+        }
+    }
     render(){
         const renderCatogeries = this.state.catogries.map((el)=>{
             return <option>{el.name}</option>
+        })
+        const renderSubCatogeries = this.state.catogries.map((el)=>{
+            return (
+                el.subNames.map((els)=>{
+                    return <option>{els}</option>
+                })
+                )
         })
         return(
             <>
@@ -72,9 +87,15 @@ class ProductModal extends React.Component{
                                 <Form.Control type="input"/>
                             </Form.Group>
                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label>دسته بندی :</Form.Label>
+                                <Form.Label>سرگروه :</Form.Label>
                                 <Form.Control as="select">
                                     {renderCatogeries}
+                                </Form.Control>
+                            </Form.Group>
+                            <Form.Group controlId="exampleForm.ControlSelect1">
+                                <Form.Label>زیر گروه :</Form.Label>
+                                <Form.Control as="select">
+                                    {renderSubCatogeries}
                                 </Form.Control>
                             </Form.Group>
                             <Form.Group controlId="formGridAddress1">
