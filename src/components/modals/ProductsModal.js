@@ -21,8 +21,27 @@ class ProductModal extends React.Component{
     handleShow = () => this.setState({
         show : true
     })
-    handleSave = () => {
-        console.log('saved')
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const data = {}
+        const keys = ['avatar','name','leadGroup','desc']
+        data['avatar'] = URL.createObjectURL(e.target.children[0].children[1].children[0].files[0])
+        for(var i=1;i<keys.length;i++){
+            data[keys[i]] = e.target.children[i].children[1].value
+        }
+        // data['createdAt'] = new Date().toISOString()
+        // data['id'] = new Date().toISOString().slice(20)
+        data['subGroup'] = 'subGroup' + new Date().toISOString().slice(22,23)
+        data['price'] = 0
+        data['entity'] = 0
+        console.log(data)
+        axios.post('http://localhost:3000/products',data)
+          .then((res)=>{
+              console.log(res)
+          })
+        this.handleClose()
+        
     }
     render(){
         const renderCatogeries = this.state.catogries.map((el)=>{
@@ -43,9 +62,10 @@ class ProductModal extends React.Component{
                       <Modal.Title>افزودن/ویرایش کالا</Modal.Title>
                     </Modal.Header>
                     <Modal.Body style={{textAlign:'right',direction:'rtl'}}>
-                        <Form>
-                            <Form.Group>
-                                <Form.File id="exampleFormControlFile1" label="تصویر کالا :" />
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Group >
+                                <Form.Label>تصویر کالا :</Form.Label>
+                                <Form.File id="exampleFormControlFile1"/>
                             </Form.Group>
                             <Form.Group controlId="exampleForm.ControlInput1">
                                 <Form.Label>نام کالا :</Form.Label>
@@ -61,13 +81,13 @@ class ProductModal extends React.Component{
                                 <Form.Label>توضیحات :</Form.Label>
                                 <Form.Control/>
                             </Form.Group>
+                            <Form.Group className='text-center'>
+                            <Button variant="primary" type='submit'>
+                                ذخیره
+                            </Button>
+                            </Form.Group>
                         </Form>
                     </Modal.Body>
-                      <Modal.Footer style={{justifyContent:'center'}}>
-                        <Button variant="primary" onClick={this.handleSave} >
-                          ذخیره
-                        </Button>
-                      </Modal.Footer>
                     </Modal>
             </>
             )
