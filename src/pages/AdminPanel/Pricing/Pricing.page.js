@@ -10,17 +10,19 @@ class Pricing extends React.Component {
         products : [],
         currentPage: 1,
         productsPerPage: 5,
-        editing : false
+        editing : false,
+        elements : []
       };
       this.handleClick = this.handleClick.bind(this);
       this.handleClickPrev = this.handleClickPrev.bind(this);
       this.handleClickNext = this.handleClickNext.bind(this);
       this.editHandler = this.editHandler.bind(this);
+      this.saveBtn = this.saveBtn.bind(this);
     }
     componentDidMount(){
         axios.get('http://localhost:3000/products')
          .then((res)=>{
-             const products = res.data
+             const products = res.data.reverse()
              this.setState({products : products})
          })
     }
@@ -38,31 +40,62 @@ class Pricing extends React.Component {
         this.setState({currentPage: this.state.currentPage + 1})
     }
     editHandler(e){
-      console.log(e.target.id)
-      console.log(this.state)
-      const element = e.target
-      const val = element.textContent 
-      element.innerHTML = `<input type='number' value=${val} min=0 ></input>`
+      // parents.push(e.target.parentElement)
+      // console.log(parents)
+      if(e.target.parentElement.id==''){
+      }else{
+        e.target.innerHTML = `<input type='number' value=${e.target.textContent} min=0 ></input>`
+        this.setState({
+          elements : [...this.state.elements,e.target.parentElement]
+        })
+      }
     }
     saveBtn(){
-      const ff = document.querySelectorAll('input')
-      console.log(ff)
-      ff.forEach((el)=>{
-        el.remove()
+      const inputs = this.removeDuplicateValues(this.state.elements)
+      inputs.map((el)=>{
+        const data = {}
+        const childrenTr = el.children
+        const inputOrTr0 = childrenTr[0].children[0]
+        const inputOrTr1 = childrenTr[1].children[0]
+        if(inputOrTr0==undefined){
+          data['price'] = childrenTr[0].textContent
+        }else{
+          data['price'] = inputOrTr0.value
+        }
+        if(inputOrTr1==undefined){
+          data['entity'] = childrenTr[1].textContent
+        }else{
+          data['entity'] = inputOrTr1.value
+        }
+        // console.log(el.id)
+        // here make a patch method
+        axios.patch(`http://localhost:3000/products/${el.id}`,data)
+          .then((res)=>{
+            console.log(res)
+          })
       })
+      window.location.reload()
+    }
+    removeDuplicateValues(array){
+      const filtredArray = [];
+      for(let i=0; i < array.length; i++){
+        if(filtredArray.indexOf(array[i]) === -1) {
+            filtredArray.push(array[i]);
+        }
+      }
+      return filtredArray
     }
     render() {
       const { products, currentPage, productsPerPage } = this.state;
-
       // Logic for displaying current products
       const indexOfLastproduct = currentPage * productsPerPage;
       const indexOfFirstproduct = indexOfLastproduct - productsPerPage;
       const currentproducts = products.slice(indexOfFirstproduct, indexOfLastproduct);
 
       const renderproducts = currentproducts.map((product) => {
-        return <tr>
-                <td onClick={this.editHandler} id={product.id}>{product.price}</td>
-                <td onClick={this.editHandler} id={product.id}>
+        return <tr id={product.id} >
+                <td onClick={this.editHandler} >{product.price}</td>
+                <td onClick={this.editHandler} >
                   {product.entity}
                 </td>
                 <td>{product.name}</td>
