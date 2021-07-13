@@ -46,7 +46,7 @@ class Home extends React.Component{
                 <ProductCard 
                 price={dairy.price+'هزار تومان'} 
                 desc={dairy.name}
-                picture={dairy.avatar}
+                picture={`http://localhost:3000${dairy.image}`}
                 key={dairy.id}
                 />
                 </Link>)
@@ -61,7 +61,7 @@ class Home extends React.Component{
                 <ProductCard 
                 price={dairy.price+'هزار تومان'} 
                 desc={dairy.name}
-                picture={dairy.avatar}
+                picture={`http://localhost:3000${dairy.image}`}
                 key={dairy.id}
                 />
                 </Link>)
@@ -76,7 +76,7 @@ class Home extends React.Component{
                 <ProductCard 
                 price={dairy.price+'هزار تومان'} 
                 desc={dairy.name}
-                picture={dairy.avatar}
+                picture={`http://localhost:3000${dairy.image}`}
                 key={dairy.id}
                 />
                 </Link>)
