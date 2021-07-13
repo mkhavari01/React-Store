@@ -11,9 +11,9 @@ class Home extends React.Component{
         p2 : []
     }
     componentDidMount(){
-        const one = 'http://localhost:3000/selectedleadGroup1'
-        const two = 'http://localhost:3000/selectedleadGroup2'
-        const three = 'http://localhost:3000/selectedleadGroup3'
+        const one = 'http://localhost:3000/products?leadGroup=کالاهای اساسی و خواربار'
+        const two = 'http://localhost:3000/products?leadGroup=لبنیات'
+        const three = 'http://localhost:3000/products?leadGroup=نوشیدنی'
         const requestOne = axios.get(one);
         const requestTwo = axios.get(two);
         const requestThree = axios.get(three);
@@ -37,7 +37,9 @@ class Home extends React.Component{
       const {p0,p1,p2} = this.state
         return(
             <>
-            <h1 className={styled.h1}>کالاهای گروه لبنیات</h1>
+            <Link to={`/siteProducts/کالاهای اساسی و خواربار/1`} style={{color:'black'}}>
+              <h1 className={styled.h1}>کالاهای اساسی و خواربار</h1>
+            </Link>
             <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
                 { 
                 p0.map(dairy => <Link to={`/product/${dairy.id}`} style={{color:'black'}}>
@@ -50,7 +52,9 @@ class Home extends React.Component{
                 </Link>)
                 }
             </div>
-            <h1 className={styled.h1}>کالاهای گروه شوینده و بهداشتی</h1>
+            <Link to={`/siteProducts/لبنیات/1`} style={{color:'black'}}>
+              <h1 className={styled.h1}>کالاهای گروه لبنیات</h1>
+            </Link>
             <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
                 { 
                 p1.map(dairy => <Link to={`/product/${dairy.id}`} style={{color:'black'}} >
@@ -63,7 +67,9 @@ class Home extends React.Component{
                 </Link>)
                 }
             </div>
-            <h1 className={styled.h1}>کالاهای گروه حبوبات</h1>
+            <Link to={`/siteProducts/نوشیدنی/1`} style={{color:'black'}}>
+              <h1 className={styled.h1}>کالاهای گروه نوشیدنی</h1>
+            </Link>
             <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
                 { 
                 p2.map(dairy => <Link to={`/product/${dairy.id}`} style={{color:'black'}} >

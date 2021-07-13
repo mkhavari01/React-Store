@@ -38,7 +38,7 @@ class AppRoute extends Component{
                     <Route path="/AdminPanel" exact>
                         <LoginForm />
                     </Route>
-                    <Route path="/SiteProducts" exact>
+                    <Route path="/SiteProducts/:leadGroup/:subGroup" exact>
                         <SiteProducts />
                     </Route>
                     <SiteHeader>
