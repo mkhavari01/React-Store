@@ -1,11 +1,20 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import styled from './product.module.css'
 import pic from '../../../assets/food.svg'
 import { Button } from 'react-bootstrap'
-class Product extends React.Component{
-    render(){
+import {useParams} from 'react-router-dom'
+import axios from 'axios'
+const Product = () => {
+        let { id } = useParams();
+        useEffect(() => {
+            axios.get(`http://localhost:3000/products${id}`)
+                .then((res)=>{
+                    console.log(res.data)
+                })
+        });
         return(
             <>
+            {console.log(id)}
             <section className='container-fluid d-flex flex-row-reverse text-right mr-5 mt-5'>
                 <div className='mx-5'>
                     <img src={pic} width='250px' />
@@ -31,7 +40,6 @@ class Product extends React.Component{
             </div>
             </>
         )
-    }
 }
 
 export {Product}
