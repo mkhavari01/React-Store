@@ -42,7 +42,7 @@ class ProductModal extends React.Component{
 
     handleSubmit = (e) => {
         // POST method
-        e.preventDefault()
+        // e.preventDefault()
         if(this.props.data==undefined){
             const formData = new FormData();
             formData.append('image',e.target.children[0].children[1].children[0].files[0])
@@ -64,6 +64,7 @@ class ProductModal extends React.Component{
             for(let i=1;i<keys.length;i++){
                 updatedData[keys[i]] = states[i]
             }
+            updatedData['image'] = e.target.children[0].children[1].children[0].files[0]
             axios.patch(`http://localhost:3000/products/${this.props.data}`,updatedData)
                 .then((res)=>{
                     console.log(res)
