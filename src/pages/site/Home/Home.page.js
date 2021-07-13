@@ -1,6 +1,6 @@
 import React from 'react'
 import {ProductCard} from '../../../components/index'
-import styled from './Home.page.module.css'
+import styled from './Homepage.module.css'
 import axios from 'axios' 
 import {Link} from 'react-router-dom'
 
