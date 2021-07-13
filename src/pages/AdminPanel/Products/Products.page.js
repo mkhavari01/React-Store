@@ -43,6 +43,14 @@ class Products extends React.Component {
       })
       console.log(e.target.parentElement.parentElement.id)
     }
+    delete(e){
+      const id = e.target.parentElement.parentElement.id
+      axios.delete(`http://localhost:3000/products/${id}`)
+        .then((res)=>{
+          console.log(res)
+        })
+      window.location.reload()
+    }
     render() {
       const { products, currentPage, productsPerPage } = this.state;
 
@@ -55,7 +63,8 @@ class Products extends React.Component {
         return <tr id={todo.id}>
                 <td>
                 <ProductModal data={this.state.user} modalHandler={this.modalHandler}>ویرایش</ProductModal> {' '}
-                  <a href='#'>حذف</a>
+                  <a href='#' onClick={this.delete} >حذف</a>
+                {/* <ProductModal data={this.state.user} modalHandler={this.modalHandler}>حذف</ProductModal> */}
                 </td>
                 <td>{todo.subGroup} / {todo.leadGroup}</td>
                 <td>{todo.name}</td>
