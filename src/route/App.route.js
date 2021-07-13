@@ -42,7 +42,7 @@ class AppRoute extends Component{
                         <SiteProducts />
                     </Route>
                     <SiteHeader>
-                        <Route path="/products/:id" exact children={<Product />} />
+                        <Route path="/product/:id" exact children={<Product />} />
                     </SiteHeader>
                 </Switch>
             </BrowserRouter>

@@ -2,7 +2,7 @@ import React from 'react'
 import {ProductCard} from '../../../components/index'
 import styled from './Home.page.module.css'
 import axios from 'axios' 
-
+import {Link} from 'react-router-dom'
 
 class Home extends React.Component{
     state={
@@ -40,34 +40,40 @@ class Home extends React.Component{
             <h1 className={styled.h1}>کالاهای گروه لبنیات</h1>
             <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
                 { 
-                p0.map(dairy => <ProductCard 
+                p0.map(dairy => <Link to={`/product/${dairy.id}`} style={{color:'black'}}>
+                <ProductCard 
                 price={dairy.price+'هزار تومان'} 
                 desc={dairy.name}
                 picture={dairy.avatar}
                 key={dairy.id}
-                />)
+                />
+                </Link>)
                 }
             </div>
             <h1 className={styled.h1}>کالاهای گروه شوینده و بهداشتی</h1>
             <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
                 { 
-                p1.map(dairy => <ProductCard 
+                p1.map(dairy => <Link to={`/product/${dairy.id}`} style={{color:'black'}} >
+                <ProductCard 
                 price={dairy.price+'هزار تومان'} 
                 desc={dairy.name}
                 picture={dairy.avatar}
                 key={dairy.id}
-                />)
+                />
+                </Link>)
                 }
             </div>
             <h1 className={styled.h1}>کالاهای گروه حبوبات</h1>
             <div className='container-fluid d-flex justify-content-around mt-1 flex-wrap'>
                 { 
-                p2.map(dairy => <ProductCard 
+                p2.map(dairy => <Link to={`/product/${dairy.id}`} style={{color:'black'}} >
+                <ProductCard 
                 price={dairy.price+'هزار تومان'} 
                 desc={dairy.name}
                 picture={dairy.avatar}
                 key={dairy.id}
-                />)
+                />
+                </Link>)
                 }
             </div>
             </>
