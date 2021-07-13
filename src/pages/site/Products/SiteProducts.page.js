@@ -52,7 +52,7 @@ class SiteProducts extends React.Component{
     linkHandler(){
         setTimeout(() => {
             window.location.reload()
-        }, 100);
+        }, 1);
     }
     render(){
         const renderSidebar = this.state.sideBar.map((el) => {
@@ -68,13 +68,16 @@ class SiteProducts extends React.Component{
         });
         // this.state.products.length = 6
         const renderProducts = this.state.mainProducts.map((el) => {
+            
             return <>
+                    <Link to={`/product/${el.id}`} style={{color:'black'}} >
                     {<ProductCard 
                         price={el.price+'هزار تومان'} 
                         desc={el.name}
                         picture={`http://localhost:3000${el.image}`}
                         key={el.id}
                     />}
+                    </Link>
                     </>
         });
         return(
