@@ -2,6 +2,7 @@ import {Component} from 'react'
 import {Navbar,Nav} from 'react-bootstrap'
 import styled from './SiteHeader.module.css'
 import picture from '../../assets/logo.svg'
+import {connect} from 'react-redux'
 class SiteHeader extends Component{
     render(){
         return(
@@ -11,6 +12,7 @@ class SiteHeader extends Component{
                     <Navbar.Brand href="#home" className='text-dark'>
                         سبد خرید
                         <i class="fa fa-shopping-cart mx-1" aria-hidden="true"></i>
+                        <span className={styled.number} >{this.props.itemsNumber}</span>
                     </Navbar.Brand>
                     <Navbar.Brand href="/adminPanel" className='text-dark'>
                         مدیریت
@@ -29,4 +31,10 @@ class SiteHeader extends Component{
     }
 }
 
-export {SiteHeader}
+const mapStateToProps = (state) => {
+    return {
+        itemsNumber : state.itemsToBuy
+    }
+};
+
+export default connect(mapStateToProps)(SiteHeader) 

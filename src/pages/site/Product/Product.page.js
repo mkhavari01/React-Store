@@ -1,13 +1,13 @@
 import React,{useEffect,useState} from 'react'
 import styled from './product.module.css'
-import pic from '../../../assets/food.svg'
 import { Button } from 'react-bootstrap'
-import {useParams} from 'react-router-dom'
 import axios from 'axios'
+import { connect } from 'react-redux'
 class Product extends React.Component {
     constructor(props){
         super(props)
         this.entityChanger = this.entityChanger.bind(this)
+        // this.props.onIncreament = this.props.onIncreament.bind(this)
     }
         state={
             data : '',
@@ -49,7 +49,7 @@ class Product extends React.Component {
                     </h3>
                     <form className={styled.form}>
                         <input type="number" id="quantity" name="quantity" min="1" max={this.state.entity} value={this.state.entity} onChange={this.entityChanger}/>
-                        <Button type='submit' varient='success'>افزودن به سبد خرید</Button>
+                        <Button type='button' varient='success' onClick={this.props.onIncreament} >افزودن به سبد خرید</Button>
                     </form>
                 </div>
             </section>
@@ -63,4 +63,9 @@ class Product extends React.Component {
     }
 }
 
-export {Product}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onIncreament : () => dispatch({ type : 'INCREAMENT' }),
+    }
+}
+export default connect(null,mapDispatchToProps)(Product)

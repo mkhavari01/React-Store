@@ -1,8 +1,6 @@
 import { Button,Modal,Form } from 'react-bootstrap'
 import React from 'react'
 import axios from 'axios'
-import editJsonFile from 'edit-json-file'
-
 class ProductModal extends React.Component{
     constructor(props){
         super(props)
