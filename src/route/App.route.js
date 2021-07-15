@@ -11,6 +11,8 @@ import {Home} from '../pages/site/Home/Home.page'
 import Product from '../pages/site/Product/Product.page'
 import {Cart} from '../pages/site/Cart/Cart.page'
 import {ShoppingForm} from '../pages/site/ShoppingForm/Shopping.page'
+import { Fail } from "../pages/site/payment/Fail";
+import { Success } from "../pages/site/payment/Success";
 //
 class AppRoute extends Component{
     render(){
@@ -48,6 +50,12 @@ class AppRoute extends Component{
                     </Route>
                     <Route path="/cart" exact >
                         <Cart />
+                    </Route>
+                    <Route path="/payment/success" exact >
+                        <Success />
+                    </Route>
+                    <Route path="/payment/fail" exact >
+                        <Fail />
                     </Route>
                     <SiteHeader>
                     <Route path="/product/:id" exact children={<Product />} />

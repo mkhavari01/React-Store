@@ -29,7 +29,7 @@ class ShoppingForm extends React.Component{
                         <Form.Control as="textarea" rows={3} />
                     </Form.Group>
                     <div className='text-center'>
-                        <Button type='submit' variant="success" >پرداخت</Button>
+                        <Button type='submit' variant="success" onClick={window.location.href='http://127.0.0.1:5501/payment.html'} >پرداخت</Button>
                     </div>
                 </Form>
             </>
