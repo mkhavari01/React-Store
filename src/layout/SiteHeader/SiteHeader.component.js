@@ -3,7 +3,21 @@ import {Navbar,Nav} from 'react-bootstrap'
 import styled from './SiteHeader.module.css'
 import picture from '../../assets/logo.svg'
 import {connect} from 'react-redux'
+import axios from 'axios'
 class SiteHeader extends Component{
+    state={
+        counter : 0
+    }
+    componentDidMount(){
+        axios.get('http://localhost:3000/person/1')
+            .then((res)=>{
+                this.setState({
+                    counter : res.data.orderList.length
+                })
+                console.log(res.data.orderList.length)
+            })
+    }
+    
     render(){
         return(
             <>
@@ -12,7 +26,7 @@ class SiteHeader extends Component{
                     <Navbar.Brand href="#home" className='text-dark'>
                         سبد خرید
                         <i class="fa fa-shopping-cart mx-1" aria-hidden="true"></i>
-                        <span className={styled.number} >{this.props.itemsNumber}</span>
+                        <span className={styled.number} >{this.state.counter}</span>
                     </Navbar.Brand>
                     <Navbar.Brand href="/adminPanel" className='text-dark'>
                         مدیریت

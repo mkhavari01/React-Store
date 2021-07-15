@@ -7,11 +7,13 @@ class Product extends React.Component {
     constructor(props){
         super(props)
         this.entityChanger = this.entityChanger.bind(this)
-        // this.props.onIncreament = this.props.onIncreament.bind(this)
+        this.addProduct = this.addProduct.bind(this)
     }
         state={
+            numberToBuy : 0,
             data : '',
-            entity : ''
+            entity : '',
+            orderList : [{}]
         }
         componentDidMount(){
             let id = window.location.href.split('/')
@@ -20,14 +22,31 @@ class Product extends React.Component {
                 .then((res)=>{
                     this.setState({
                         data : res.data,
-                        entity : res.data.entity
+                        entity : res.data.entity,
+                    })
+                })
+            axios.get('http://localhost:3000/person/1')
+                .then((res)=>{
+                    this.setState({
+                        orderList : res.data.orderList
                     })
                 })
         }
         entityChanger(e){
             this.setState({
-                entity : e.target.value
+                numberToBuy : e.target.value
             })
+        }
+        addProduct(e){
+            // e.preventDefault()
+            const previousProduct = this.state.orderList
+            let newProduct = this.state.data
+            newProduct['entity'] = this.state.numberToBuy
+            const dataToSend = [newProduct,...previousProduct]
+            axios.patch('http://localhost:3000/person/1',{orderList : dataToSend})
+                .then((res)=>{
+                    console.log(res)
+                })
         }
         render(){
             const {data} = this.state
@@ -47,9 +66,9 @@ class Product extends React.Component {
                     <h3 className='mt-3' style={{direction:'rtl'}}>
                         {data.price} هزار تومان
                     </h3>
-                    <form className={styled.form}>
-                        <input type="number" id="quantity" name="quantity" min="1" max={this.state.entity} value={this.state.entity} onChange={this.entityChanger}/>
-                        <Button type='button' varient='success' onClick={this.props.onIncreament} >افزودن به سبد خرید</Button>
+                    <form className={styled.form} onSubmit={this.addProduct} >
+                        <input type="number" id="quantity" name="quantity" min="1" max={this.state.entity} value={this.state.numberToBuy} onChange={this.entityChanger}/>
+                        <Button type='submit' varient='success'>افزودن به سبد خرید</Button>
                     </form>
                 </div>
             </section>
@@ -65,7 +84,7 @@ class Product extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onIncreament : () => dispatch({ type : 'INCREAMENT' }),
+        onIncreament : () => dispatch({ type : 'INCREAMENT'}),
     }
 }
 export default connect(null,mapDispatchToProps)(Product)
