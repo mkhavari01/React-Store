@@ -1,22 +1,25 @@
 import React from 'react'
-import { Table,Pagination,InputGroup } from 'react-bootstrap';
+import { Table,Pagination } from 'react-bootstrap';
 import styled from './orders.page.module.css'
 import axios from 'axios' 
-
+import {OrdersModal} from '../../../components/modals/OrdersModal'
 class Orders extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         products : [],
+        user : '',
         currentPage: 1,
         productsPerPage: 5,
       };
       this.handleClick = this.handleClick.bind(this);
       this.handleClickPrev = this.handleClickPrev.bind(this);
       this.handleClickNext = this.handleClickNext.bind(this);
+      this.radioHandler = this.radioHandler.bind(this);
+      this.modalHandler = this.modalHandler.bind(this);
     }
     componentDidMount(){
-        axios.get('http://localhost:3000/products')
+        axios.get('http://localhost:3000/orders')
          .then((res)=>{
              const products = res.data
              this.setState({products : products})
@@ -35,22 +38,44 @@ class Orders extends React.Component {
     handleClickNext() {
         this.setState({currentPage: this.state.currentPage + 1})
     }
+    radioHandler(e){
+      if(e.target.value=="notDelivered"){
+        axios.get('http://localhost:3000/orders?deliverd=false')
+         .then((res)=>{
+             const products = res.data
+             this.setState({products : products})
+         })
+      }else{
+        axios.get('http://localhost:3000/orders?deliverd=true')
+         .then((res)=>{
+             const products = res.data.reverse()
+             this.setState({products : products})
+         })
+      }
+    }
+    modalHandler= (e)=>{
+      // console.log(e.target.parentElement.id)
+      this.setState({
+        user : e.target.parentElement.id
+      })
+      // console.log(this.state.user)
+    }
     render() {
       const { products, currentPage, productsPerPage } = this.state;
 
       // Logic for displaying current products
-      const indexOfLastTodo = currentPage * productsPerPage;
-      const indexOfFirstTodo = indexOfLastTodo - productsPerPage;
-      const currentproducts = products.slice(indexOfFirstTodo, indexOfLastTodo);
+      const indexOfLastproduct = currentPage * productsPerPage;
+      const indexOfFirstproduct = indexOfLastproduct - productsPerPage;
+      const currentproducts = products.slice(indexOfFirstproduct, indexOfLastproduct);
 
-      const renderproducts = currentproducts.map((todo) => {
+      const renderproducts = currentproducts.map((product) => {
         return <tr>
-                <td><a href='#'>ثبت سفارش</a></td>
-                <td>{todo.price}</td>
+                <td id={product.id}><OrdersModal dataParentToChild = {this.state.user} modalHandler={this.modalHandler}/></td>
+                <td>1400/4/{product.id}</td>
                 <td>
-                  {todo.id}
+                  {product.totalPrice}
                 </td>
-                <td>{todo.createdAt}</td>
+                <td>{product.name}</td>
               </tr>
       });
 
@@ -62,7 +87,7 @@ class Orders extends React.Component {
 
       const renderPageNumbers = pageNumbers.map(number => {
         return (
-        <Pagination.Item key={number} id={number} onClick={this.handleClick} active={this.state.currentPage==number ?'true' : ''} >
+        <Pagination.Item key={number} id={number} onClick={this.handleClick} active={currentPage==number ?'true' : ''} >
             {number}
         </Pagination.Item>
         );
@@ -71,11 +96,11 @@ class Orders extends React.Component {
       return (
         <div className='mt-4 container'>
             <div className={styled.pageDetail}>
-                <h2>مدیریت موجودی و قیمت ها</h2>
+                <h2>مدیریت سفارش ها</h2>
                 <form>
-                    <input type="radio" id="html" name="fav_language" value="input1" />
+                    <input type="radio" id="html" name="fav_language" value="notDelivered" onClick={this.radioHandler} />
                     <label for="html" className='mr-5'>سفارش های در انتظار ارسال</label>
-                    <input type="radio" id="html" name="fav_language" value="input2" />
+                    <input type="radio" id="html" name="fav_language" value="delivered" onClick={this.radioHandler} />
                     <label for="html">سفارش های تحویل شده</label>
                 </form>
             </div>
