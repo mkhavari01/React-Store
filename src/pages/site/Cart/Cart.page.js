@@ -39,7 +39,7 @@ class Cart extends React.Component{
         window.location.reload()
     }
     finalShopping(){
-        window.location.href = 'http://localhost:3001/orderForm'
+        window.location.href = 'http://localhost:3001/shoppingForm'
     }
     render(){
         const renderproducts = this.state.products.map((product) => {

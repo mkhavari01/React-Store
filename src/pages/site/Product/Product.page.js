@@ -2,7 +2,6 @@ import React,{useEffect,useState} from 'react'
 import styled from './product.module.css'
 import { Button } from 'react-bootstrap'
 import axios from 'axios'
-import { connect } from 'react-redux'
 class Product extends React.Component {
     constructor(props){
         super(props)
@@ -55,7 +54,9 @@ class Product extends React.Component {
                 .then((res)=>{
                     console.log(res)
                 })
-            window.location.reload()
+            setTimeout(() => {
+                window.location.reload()
+            }, 500);
         }
         render(){
             const {data} = this.state
@@ -91,9 +92,4 @@ class Product extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onIncreament : () => dispatch({ type : 'INCREAMENT'}),
-    }
-}
-export default connect(null,mapDispatchToProps)(Product)
+export default Product
