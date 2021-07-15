@@ -9,6 +9,7 @@ import {Orders} from '../pages/AdminPanel/Orders/Orders.page'
 import {SiteProducts} from '../pages/site/Products/SiteProducts.page'
 import {Home} from '../pages/site/Home/Home.page'
 import Product from '../pages/site/Product/Product.page'
+import {Cart} from '../pages/site/Cart/Cart.page'
 //
 class AppRoute extends Component{
     render(){
@@ -41,8 +42,11 @@ class AppRoute extends Component{
                     <Route path="/SiteProducts/:leadGroup/:subGroup" exact>
                         <SiteProducts />
                     </Route>
+                    <Route path="/cart" exact >
+                        <Cart />
+                    </Route>
                     <SiteHeader>
-                        <Route path="/product/:id" exact children={<Product />} />
+                    <Route path="/product/:id" exact children={<Product />} />
                     </SiteHeader>
                 </Switch>
             </BrowserRouter>

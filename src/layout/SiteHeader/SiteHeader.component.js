@@ -23,7 +23,7 @@ class SiteHeader extends Component{
             <>
             <Navbar  variant="dark" className={styled.header} style={{justifyContent:'space-between'}} >
                 <div className='mx-5'>
-                    <Navbar.Brand href="#home" className='text-dark'>
+                    <Navbar.Brand href="#home" className='text-dark' href='/cart' >
                         سبد خرید
                         <i class="fa fa-shopping-cart mx-1" aria-hidden="true"></i>
                         <span className={styled.number} >{this.state.counter}</span>
@@ -34,7 +34,7 @@ class SiteHeader extends Component{
                 </div>
                 <div className='mr-4'>
                     <Nav className={styled.brand}>
-                        <Nav.Link href="#home" className='mx-3' style={{fontSize:'30px',color:'black'}}>فروشگاه فلان</Nav.Link>
+                        <Nav.Link href="/" className='mx-3' style={{fontSize:'30px',color:'black'}}>فروشگاه فلان</Nav.Link>
                         <img width='50px' height='50px' src={picture} />
                     </Nav>
                 </div> 

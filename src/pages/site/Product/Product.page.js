@@ -13,7 +13,8 @@ class Product extends React.Component {
             numberToBuy : 0,
             data : '',
             entity : '',
-            orderList : [{}]
+            orderList : [{}],
+            price : 0
         }
         componentDidMount(){
             let id = window.location.href.split('/')
@@ -28,6 +29,7 @@ class Product extends React.Component {
             axios.get('http://localhost:3000/person/1')
                 .then((res)=>{
                     this.setState({
+                        price : res.data.totalPrice,
                         orderList : res.data.orderList
                     })
                 })
@@ -38,12 +40,18 @@ class Product extends React.Component {
             })
         }
         addProduct(e){
-            // e.preventDefault()
+            e.preventDefault()
             const previousProduct = this.state.orderList
             let newProduct = this.state.data
             newProduct['entity'] = this.state.numberToBuy
+            newProduct['price'] = this.state.numberToBuy * this.state.data.price
             const dataToSend = [newProduct,...previousProduct]
             axios.patch('http://localhost:3000/person/1',{orderList : dataToSend})
+                .then((res)=>{
+                    console.log(res)
+                })
+            const priceChange = {totalPrice : newProduct['price'] + this.state.price}
+            axios.patch('http://localhost:3000/person/1',priceChange)
                 .then((res)=>{
                     console.log(res)
                 })
