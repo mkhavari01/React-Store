@@ -32,7 +32,7 @@ class OrdersModal extends Component{
       console.log('props has changed.')
       axios.get(`http://localhost:3000/orders/${this.props.dataParentToChild}`)
          .then((res)=>{
-             const person = res.data
+             const person = res.data.reverse()
              this.setState({user : person,orders:person.orderList})
          })
     }
@@ -62,7 +62,7 @@ class OrdersModal extends Component{
                 آدرس : <span>{person.address}</span>
               </li>
               <li>
-                تلفن : <span>{person.telephone}</span>
+                تلفن : <span>{person.phone}</span>
               </li>
               <li>
                 زمان تحویل : <span>{person.deliverTime}</span>

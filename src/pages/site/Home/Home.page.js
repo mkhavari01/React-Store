@@ -35,6 +35,9 @@ class Home extends React.Component{
     }
     render(){
       const {p0,p1,p2} = this.state
+      p0.length = 6
+      p1.length = 6
+      p2.length = 6
         return(
             <>
             <Link to={`/siteProducts/کالاهای اساسی و خواربار/1`} style={{color:'black'}}>
