@@ -48,14 +48,15 @@ class Orders extends React.Component {
       }else{
         axios.get('http://localhost:3000/orders?deliverd=true')
          .then((res)=>{
-             const products = res.data
+             const products = res.data.reverse()
              this.setState({products : products})
          })
       }
     }
     modalHandler= (e)=>{
+      // console.log(e.target.parentElement.id)
       this.setState({
-        user : e.target.parentElement.parentElement.lastChild.textContent
+        user : e.target.parentElement.id
       })
       // console.log(this.state.user)
     }
@@ -69,7 +70,7 @@ class Orders extends React.Component {
 
       const renderproducts = currentproducts.map((product) => {
         return <tr>
-                <td><OrdersModal dataParentToChild = {this.state.user} modalHandler={this.modalHandler}/></td>
+                <td id={product.id}><OrdersModal dataParentToChild = {this.state.user} modalHandler={this.modalHandler}/></td>
                 <td>1400/4/{product.id}</td>
                 <td>
                   {product.totalPrice}

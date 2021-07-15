@@ -30,31 +30,31 @@ class OrdersModal extends Component{
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.dataParentToChild !== this.props.dataParentToChild) {
       console.log('props has changed.')
-      axios.get(`http://localhost:3000/products?user=${this.props.dataParentToChild}`)
-         .then((res)=>{
-             const product = res.data
-             this.setState({orders : product})
-         })
-      axios.get(`http://localhost:3000/orders?name=${this.props.dataParentToChild}`)
+      axios.get(`http://localhost:3000/orders/${this.props.dataParentToChild}`)
          .then((res)=>{
              const person = res.data
-             this.setState({user : person})
+             this.setState({user : person,orders:person.orderList})
          })
     }
   }
-  saveBtn(){
-    console.log('save btn called')
+  async saveBtn(e){
+    await axios.patch(`http://localhost:3000/orders/${e.target.id}`,{deliverd : true})
+      .then((res)=>{
+        console.log(res.data)
+      })
+    window.location.reload()
   }
   render(){
+  const person = this.state.user
   const renderproducts = this.state.orders.map((product) => {
     return    <tr>
-                  <td>{product.id}</td>
+                  <td>{product.entity}</td>
                   <td>{product.price}</td>
                   <td>{product.name}</td>
               </tr>
   });
-  const renderCustumer = this.state.user.map((person) => {
-    return  <ul>
+    const renderCustumer =  
+            <ul>
               <li>
                 نام مشتری : <span>{person.name}</span>
               </li>
@@ -70,19 +70,7 @@ class OrdersModal extends Component{
               <li>
                 زمان سفارش : <span>{person.orderTime}</span>
               </li>
-            </ul>
-  });
-  const renderFooter = this.state.user.map((person) => {
-    if(person.deliverd){
-      return <span>
-              زمان تحویل : <span>{person.deliverTime}</span>
-            </span>
-    }else{
-      return  <Button variant="success" onClick={this.saveBtn}>
-            تحویل شد
-              </Button>
-    }
-  });
+            </ul> ;
   return (
     <>
       <a href='#' onClick={this.handleShow}>
@@ -114,8 +102,8 @@ class OrdersModal extends Component{
                 </tbody>
             </Table>
         </Modal.Body>
-        <Modal.Footer>
-          {renderFooter}
+        <Modal.Footer className='text-center'>
+          <span >{this.state.user.deliverd ? <span> زمان تحویل : <span>{person.deliverTime}</span> </span> : <Button variant="success" onClick={this.saveBtn} id={this.state.user.id}>تحویل شد</Button>}</span>
         </Modal.Footer>
       </Modal>
     </>
