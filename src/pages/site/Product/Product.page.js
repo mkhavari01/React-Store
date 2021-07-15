@@ -55,6 +55,7 @@ class Product extends React.Component {
                 .then((res)=>{
                     console.log(res)
                 })
+            window.location.reload()
         }
         render(){
             const {data} = this.state
