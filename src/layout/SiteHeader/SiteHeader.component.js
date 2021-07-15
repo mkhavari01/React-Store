@@ -45,10 +45,4 @@ class SiteHeader extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        itemsNumber : state.itemsToBuy
-    }
-};
-
-export default connect(mapStateToProps)(SiteHeader) 
+export default SiteHeader
