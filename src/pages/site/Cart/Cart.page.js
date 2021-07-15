@@ -2,6 +2,7 @@ import React from 'react'
 import { SiteHeader } from '../../../layout';
 import {Table} from 'react-bootstrap';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 class Cart extends React.Component{
     constructor(props){
@@ -37,6 +38,9 @@ class Cart extends React.Component{
                 })
         window.location.reload()
     }
+    finalShopping(){
+        window.location.href = 'http://localhost:3001/orderForm'
+    }
     render(){
         const renderproducts = this.state.products.map((product) => {
             return <tr key={product.id} >
@@ -55,20 +59,23 @@ class Cart extends React.Component{
             <SiteHeader />
             <div className='container mt-5 text-right'>
                 <h3>سبد خرید</h3>
-            <Table striped bordered hover className='mt-4'>
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>قیمت</th>
-                    <th>تعداد</th>
-                    <th>کالا</th>
-                </tr>
-                </thead>
-                <tbody>
-                    {renderproducts}
-                </tbody>
-            </Table>
-            <h3 className='mt-4'>جمع نهایی :  {this.state.totalPrice} هزار تومان</h3>
+                <Table striped bordered hover className='mt-4'>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>قیمت</th>
+                        <th>تعداد</th>
+                        <th>کالا</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {renderproducts}
+                    </tbody>
+                </Table>
+                <div className='d-flex flex-row-reverse justify-content-between' >
+                    <h3 className='mt-4'>جمع نهایی :  {this.state.totalPrice}  تومان</h3>
+                    <Button className='bg-success' onClick={this.finalShopping} >نهایی کردن سبد خرید</Button>
+                </div>
             </div>
         </>
         )
