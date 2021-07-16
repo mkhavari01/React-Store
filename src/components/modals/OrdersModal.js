@@ -32,7 +32,7 @@ class OrdersModal extends Component{
       console.log('props has changed.')
       axios.get(`http://localhost:3000/orders/${this.props.dataParentToChild}`)
          .then((res)=>{
-             const person = res.data.reverse()
+             const person = res.data
              this.setState({user : person,orders:person.orderList})
          })
     }
