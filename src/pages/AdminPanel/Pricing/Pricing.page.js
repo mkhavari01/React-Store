@@ -40,8 +40,9 @@ class Pricing extends React.Component {
         this.setState({currentPage: this.state.currentPage + 1})
     }
     editHandler(e){
-      // parents.push(e.target.parentElement)
-      // console.log(parents)
+      this.setState({
+        editing : true
+      })
       if(e.target.parentElement.id==''){
       }else{
         e.target.innerHTML = `<input type='number' value=${e.target.textContent} min=0 ></input>`
@@ -120,7 +121,7 @@ class Pricing extends React.Component {
         <div className='mt-4 container'>
             <div className={styled.pageDetail}>
                 <h2>مدیریت موجودی و قیمت ها</h2>
-                <Button variant="light" onClick={this.saveBtn} > ذخیره</Button>
+                <Button variant="success" onClick={this.saveBtn} disabled={this.state.editing ? false : true} > ذخیره</Button>
             </div>
             <Table striped bordered hover>
                 <thead>
