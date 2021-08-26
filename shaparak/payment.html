@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+  
+<head>
+    <title>
+        صفحه شاپک پرداخت
+    </title>
+</head>
+  
+<body style="text-align:center;">
+    <h1>
+        صفحه پرداخت
+    </h1>
+        <div>
+            <img src="./Saman-.jpg" >
+            <div style='
+            width: fit-content;
+            position: absolute;
+            bottom: 80px;
+            right: 402px;
+            display: flex;
+            flex-direction: column;
+        '>
+                <button style="width: 258px;padding: 6px;color: white;background: darkgreen;cursor: pointer;border-radius: 5px;margin: 2.5px;" id="buy">پرداخت</button>
+                <button style="width: 258px;padding: 6px;color: white;background: darkred;cursor: pointer;border-radius: 5px;margin: 2.5px;" id="notBuy">انصراف</button>
+            </div>
+        </div>    
+    <script>
+        document.querySelector('#buy').addEventListener('click',function(e){
+            window.location.href = 'http://localhost:3001/payment/success'
+        })
+        document.querySelector('#notBuy').addEventListener('click',function(e){
+            window.location.href = 'http://localhost:3001/payment/fail'
+        })
+    </script>
+</body>
+  
+</html>
